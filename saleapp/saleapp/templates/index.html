@@ -18,22 +18,31 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="collapsibleNavbar">
-            <ul class="navbar-nav">
+            <ul class="navbar-nav me-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Trang chủ</a>
+                    <a class="nav-link" href="/">Trang chủ</a>
                 </li>
 
                 {% for c in categories %}
                 <li class="nav-item">
-                    <a class="nav-link" href="#">{{c.name}}</a>
+                    <a class="nav-link" href="/?category_id={{c.id}}">{{c.name}}</a>
                 </li>
                 {% endfor %}
             </ul>
+            <form class="d-flex" action="/">
+                <input class="form-control me-2" type="text" name="kw" placeholder="Nhập từ khóa...">
+                <button class="btn btn-primary" type="submit">Tìm</button>
+            </form>
         </div>
     </div>
 </nav>
 
-<session class="container">
+
+
+
+
+<section class="container">
+    {% if products %}
     <div class="row">
         {% for p in products %}
         <div class="col-md-3 col-12" style="padding:1rem;">
@@ -50,6 +59,16 @@
         </div>
         {% endfor %}
     </div>
-</session>
+    {% else %}
+        <p class="mt-2 text-success">Không có sản phẩm</p>
+    {% endif %}
+</section>
+
+<footer>
+    <div class="mt-4 p-5 bg-primary text-white rounded">
+        <h1>E-Commerce Website</h1>
+        <p>&copy; 2024</p>
+    </div>
+</footer>
 </body>
 </html>
